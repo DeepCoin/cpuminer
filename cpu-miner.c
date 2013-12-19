@@ -169,7 +169,7 @@ Options:\n\
   -a, --algo=ALGO       specify the algorithm to use\n\
                           scrypt    scrypt(1024, 1, 1) (default)\n\
                           sha256d   SHA-256d\n\
-			  skein     Skein+Sha256\n\
+                          skein     Skein+Sha256\n\
   -o, --url=URL         URL of mining server (default: " DEF_RPC_URL ")\n\
   -O, --userpass=U:P    username:password pair for mining server\n\
   -u, --user=USERNAME   username for mining server\n\
@@ -1320,10 +1320,10 @@ int main(int argc, char *argv[])
 	num_processors = sysinfo.dwNumberOfProcessors;
 #elif defined(_SC_NPROCESSORS_CONF)
 	num_processors = sysconf(_SC_NPROCESSORS_CONF);
-#elif defined(HW_NCPU)
+#elif defined(CTL_HW) && defined(HW_NCPU)
 	int req[] = { CTL_HW, HW_NCPU };
 	size_t len = sizeof(num_processors);
-	v = sysctl(req, 2, &num_processors, &len, NULL, 0);
+	sysctl(req, 2, &num_processors, &len, NULL, 0);
 #else
 	num_processors = 1;
 #endif

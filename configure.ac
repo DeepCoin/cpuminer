@@ -94,7 +94,7 @@ AC_CHECK_LIB(crypto, SHA1_Init, CRYPTO_LIBS="-lcrypto",)
 AC_CHECK_LIB([pthread], [pthread_create], PTHREAD_LIBS="-lpthread",
   AC_CHECK_LIB([pthreadGC2], [pthread_create], PTHREAD_LIBS="-lpthreadGC2",
     AC_CHECK_LIB([pthreadGC1], [pthread_create], PTHREAD_LIBS="-lpthreadGC1",
-      AC_CHECK_LIB([pthreadGC], [pthread_create], PTHREAD_LIBS="-lpthreadGC",
+      AC_CHECK_LIB([pthreadGC], [pthread_create], PTHREAD_LIBS="-lpthreadGC"
 ))))
 
 AM_CONDITIONAL([WANT_JANSSON], [test x$request_jansson = xtrue])
